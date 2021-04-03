@@ -10,8 +10,8 @@
 
 5. In Airflow control panel, manually run the following DAGs in order
 
-> a. gapminder_staging_dag
-> b. covid19_staging_dag
-> c. dimension_dag
-> d. gapminder_dag
-> e. covid19_dag
+> a. gapminder_staging_dag<br/>
+> b. covid19_staging_dag<br/>
+> c. dimension_dag<br/>
+> d. gapminder_dag<br/>
+> e. covid19_dag<br/>
