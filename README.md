@@ -63,6 +63,31 @@ A Jupyter notebook was used for analysis of the demographic and covid-19 dataset
 
 ## Data Model
 
+### STAR Schema
+The STAR schema design is one of the most widely used schema designs for OLAP (Online Analytical Processing) systems today.  It provides for less complex queries, flexible schema, and fast aggregation of quantitative measurable data values.
+
+**Less Complex Queries**<br/>
+In the data model diagrammed below we have specific education, GDP, government, females, males, and population indicators grouped together so that analysts may view these 
+data columns side by side in pandas dataframes and reports without the need of writing 
+complex queries and joins, and without the performance penalty resulting from several joins.
+
+**Flexible Schema**<br/>
+The STAR schema is very flexible to future additions of demographic data attributes. If we decide to add additional gapminder data attributes from one of the staging tables then we can alter the `global.world_demographics` fact table with additional attributes with minimal impact to existing analytic queries and reports referencing the `global.world_demographics`  fact table.
+
+This data model can support a future snowflake schema by creating child tables on the  `global.world_countries` table such as a province-region table that can store regions, towns, and cities belonging to a particular country.  This can be complemented by another fact table which stores population density information at the region/town/city level.
+
+**Dealing with sparse data**<br/>
+A star schema can easily handle an issue where some countries have data for certain categories while others do not.  A 3NF (third normal form) design will produce several normalized tables in which some countries will not have matching records in each of the normalized tables for GDP, education, females, males, government, and population.
+
+For example, a particular country may not have education data available for a specific year while it has females and males records for the same year.  A query to account for these data gaps would be very complicated and less efficient. A STAR schema resolves this issue since all demographics columns reside on the same record for each country spanning the past 20 years.
+
+**Fast aggregation of values**<br/>
+Queries such as the sum or average for any demographic over a span of several years is easily achievable with the STAR schema.  OLAP cubes which pre-aggregate data across multiple dimensions can also be created for STAR schema data models.
+
+
+### STAR Schema Diagram
+
+
 ![](images/dend%20final%20project%20data%20model.jpg)
 
 ## Data Pipelines
