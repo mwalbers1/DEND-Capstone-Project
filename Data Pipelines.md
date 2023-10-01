@@ -40,7 +40,9 @@ The `dimension_dag` is responsible for merging the countries from the gapminder 
 ## gapminder_dag
 ![](images/gapminder_dag.png)
 
-The data from the gapminder staging tables is combined to form a single fact table called `global.world_countries` with a surrogate key called country id.  The country_id field is a reference column (foreign key) in the fact tables.
+The data from the gapminder staging tables is combined to form a single fact table called 
+`global.world_demographics` with a surrogate key called country id.  The country_id field is a 
+reference column (foreign key) in the fact tables.
 
 ## covid19_dag
 ![](images/covid19_dag.png)
